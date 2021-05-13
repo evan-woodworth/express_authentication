@@ -19,7 +19,7 @@ const STRATEGY = new LocalStrategy({
         }
     } catch (error) {
         console.log('------- Error below -----------');
-        console.log(err);
+        console.log(error);
     }
 });
 
@@ -35,7 +35,7 @@ passport.deserializeUser(async (id, cb)=>{
         }
     } catch (error) {
         console.log('------- Error below -----------');
-        console.log(err);
+        console.log(error);
     }
 });
 
