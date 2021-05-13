@@ -6,6 +6,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const SECRET_SESSION = process.env.SECRET_SESSION;
 console.log(SECRET_SESSION);
+const passport = require('./config/ppConfig');
 
 app.set('view engine', 'ejs');
 
@@ -30,6 +31,8 @@ app.use((req,res,next)=>{
   res.locals.currentUser = req.user;
   next();
 });
+app.use(passport.initialize()); //Initialize passport
+app.use(passport.session()); //add a session
 
 app.get('/', (req, res) => {
   res.render('index');
