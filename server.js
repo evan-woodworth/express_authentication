@@ -23,17 +23,19 @@ app.use(session({
   //Save a new session
   saveUninitialized: true
 }));
+app.use(passport.initialize()); //Initialize passport
+app.use(passport.session()); //add a session
 //flash middleware
 app.use(flash());
 //store flash messages and user on res.locals
 app.use((req,res,next)=>{
+  console.log('---------------------');
   console.log(res.locals);
   res.locals.alerts = req.flash();
   res.locals.currentUser = req.user;
   next();
 });
-app.use(passport.initialize()); //Initialize passport
-app.use(passport.session()); //add a session
+
 
 app.get('/', (req, res) => {
   res.render('index');
